@@ -26,17 +26,17 @@ const server = http.createServer((req, res) => {
 
   fs.readFile(filePath, (err, content) => {
     if (err) {
-      // fs.readFile(path.join(__dirname, 'public', 'error.html'), (err, data) => {
-      //   if (err) {
-      //     res.writeHead(500)
-      //     res.end('Error')
-      //   } else {
-      //     res.writeHead(200, {
-      //       'Content-Type': contentType
-      //     })
-      //     res.end(data)
-      //   }
-      // })
+      fs.readFile(path.join(__dirname, 'public', 'error.html'), (err, data) => {
+        if (err) {
+          res.writeHead(500)
+          res.end('Error')
+        } else {
+          res.writeHead(200, {
+            'Content-Type': contentType
+          })
+          res.end(data)
+        }
+      })
     } else {
       res.writeHead(200, {
         'Content-Type': contentType
